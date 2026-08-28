@@ -345,16 +345,13 @@ html[dir="rtl"] .video-frame .play-hint .play-icon{
   .lang button{padding:6px 10px}
 }
 
-/* Fade-in animation (CSS-only so it works without JS for SEO/screenshots) */
+/* Sections default to fully visible — animation is purely additive for browsers that allow it */
 @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-.reveal{opacity:1}
-.no-js .reveal{opacity:0;animation:fadeUp .8s ease .1s forwards}
-.reveal{animation:fadeUp .8s ease both}
+.reveal{opacity:1;transform:none}
 
-/* Reduced motion */
+/* Reduced motion: skip any animation entirely */
 @media (prefers-reduced-motion: reduce){
-  .reveal{opacity:1;transform:none;transition:none}
-  *{animation-duration:.001ms !important;transition-duration:.001ms !important}
+  *{animation-duration:.001ms !important;transition-duration:.001ms !important;animation-iteration-count:1 !important}
 }
 </style>
 </head>
